@@ -59,10 +59,7 @@ function updateSubLayout(nodes, links, m) {
         // return fill(+d.key);
         return "#000";
     };
-    //var width = 20, height = 20;
-    //var svg = d3.select("body").append("svg").attr("width", XGAP_).attr("height", XGAP_);
-
-
+ 
     svg.selectAll(".force" + m).remove();
 
     var svg2 = svg.append("svg")
@@ -90,7 +87,7 @@ function updateSubLayout(nodes, links, m) {
         .enter().append("path", "circle")
         .style("fill", groupFill)
         .style("stroke", groupFill)
-        .style("stroke-width", 1)
+        .style("stroke-width", 2)
         .style("stroke-linejoin", "round")
         .style("opacity", 0.2);
 
@@ -115,11 +112,6 @@ function updateSubLayout(nodes, links, m) {
         .style("stroke-width", 0.02)
         .style("stroke-opacity", 1)
         .style("fill",function(d){
-           // if (d.name=="Kwan-Liu Ma")
-           //     return "#444";
-           // else if (d.name=="Carlos D. Correa")
-           //     return "#888";
-           // else
                 return getColor3(d.category);
         })
         .on("mouseover", function(d){
@@ -139,6 +131,9 @@ function updateSubLayout(nodes, links, m) {
             .attr("y2", function (d) { return d.target.y; });
         group.attr("d", groupPath);   
         
+        if (m==3){
+            tickWordCLuster();
+        }
     });
 
     force.on("end", function () {

@@ -10,7 +10,7 @@
 var margin = {top: 0, right: 0, bottom: 0, left: 0};
 var width = document.body.clientWidth - margin.left - margin.right;
 var height = 50 - margin.top - margin.bottom;
-var heightSVG = 799;
+var heightSVG = 1500;
 
 //Append a SVG to the body of the html page. Assign this SVG as an object to svg
 var svg = d3.select("body").append("svg")
@@ -92,7 +92,7 @@ var isForFigure4 = false;
 
 var fileList = ["WikiNews","Huffington","CrooksAndLiars","EmptyWheel","Esquire","FactCheck"
                 ,"VIS_papers","IMDB","PopCha","Cards_PC","Cards_Fries"]
-var initialDataset = "VIS_papers";
+var initialDataset = "Esquire";
 
 var fileName;
 
@@ -196,7 +196,8 @@ function loadData(){
                 maxNodesInSnapshot = 50;
                 maxRel = 5;
                 snapshotScale = 0.20;    // PopCha first movie was in 1937
-            }   
+            }
+           
 
             //minYear = 2004;
             // Update months
@@ -259,9 +260,10 @@ function loadData(){
             else if (fileName.indexOf("Esquire")>=0){
                 document.getElementById('nodeDropdown').value = "1";  
                 document.getElementById('edgeWeightDropdown').value = "1";  
-                maxNodesInSnapshot =15;
-                maxRel = 8;
-                snapshotScale = 0.16;   
+                minYear = 2013; 
+                maxNodesInSnapshot =150;
+                maxRel = 5;
+                snapshotScale = .15;   
             }
             else if (fileName.indexOf("EmptyWheel")>=0){
                 minYear = 2012; 
@@ -355,7 +357,9 @@ function loadData(){
         
         // 2017. this function is main2.js
         computeMonthlyGraphs();
-       
+        
+        wordCluster(); // 2018 wordCluster ********************************************************************
+
         // Spinner Stop ********************************************************************
         spinner.stop();
 
@@ -458,7 +462,7 @@ function readTermsAndRelationships() {
     }
 
     var removeList = {};   // remove list **************
-    removeList["source"] = 1;
+   /* removeList["source"] = 1;
     removeList["person"] = 1;
     removeList["location"] = 1;
     removeList["organization"] = 1;

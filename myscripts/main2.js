@@ -20,7 +20,7 @@ var cutOffvalue=[];
 var snapshotScale = 0.20; // Snapshiot Size******************************************************
 var maxNodesInSnapshot =30; // ******************************************************
 
-var nodeRadiusRange = [0.06, 0.6]; 
+var nodeRadiusRange = [0.1, 1]; 
 var linkscaleForSnapshot = 0.15; 
    
 var maxHeightOfStreamGraph = 9;
@@ -304,7 +304,7 @@ function drawgraph2() {
 
 
     var max = 1;
-    var yStart = height + 250; // y starts drawing the stream graphs
+    var yStart = height + 1000; // y starts drawing the stream graphs
     var yTemp = yStart;
     var numNodesInFirstMonth = 0;
     // Compute y position of small multiple *******
